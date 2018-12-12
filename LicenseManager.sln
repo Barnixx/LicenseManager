@@ -1,14 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseManagerApi", "LicenseManagerApi\LicenseManagerApi.csproj", "{982F81B7-6E36-4F26-8382-095B8AF539F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseManagerApi", "LicenseManager.Api\LicenseManager.Api.csproj", "{982F81B7-6E36-4F26-8382-095B8AF539F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseManagerCore", "LicenseManagerCore\LicenseManagerCore.csproj", "{05392154-64B8-4701-B0C4-FE1BCA649837}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseManagerCore", "LicenseManager.Core\LicenseManager.Core.csproj", "{05392154-64B8-4701-B0C4-FE1BCA649837}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseManagerInfrastructure", "LicenseManagerInfrastructure\LicenseManagerInfrastructure.csproj", "{B2089100-1E18-4B0C-9537-32875498A5DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseManagerInfrastructure", "LicenseManager.Infrastructure\LicenseManager.Infrastructure.csproj", "{B2089100-1E18-4B0C-9537-32875498A5DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseManagerTests", "LicenseManagerTests\LicenseManagerTests.csproj", "{566732BE-0DE3-4732-A3FB-30F32040ABF9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseManagerTests", "LicenseManager.Tests\LicenseManager.Tests.csproj", "{566732BE-0DE3-4732-A3FB-30F32040ABF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseManagerTestsEndToEnd", "LicenseManagerTestsEndToEnd\LicenseManagerTestsEndToEnd.csproj", "{AFA2CAAD-D154-45A0-A3CD-96FF22D18E48}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseManagerTestsEndToEnd", "LicenseManager.Tests.EndToEnd\LicenseManager.Tests.EndToEnd.csproj", "{AFA2CAAD-D154-45A0-A3CD-96FF22D18E48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

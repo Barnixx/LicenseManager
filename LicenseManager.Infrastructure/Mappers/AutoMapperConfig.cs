@@ -1,6 +1,6 @@
 using AutoMapper;
+using LicenseManager.Core.Domain;
 using LicenseManager.Infrastructure.DTO;
-using LicenseManagerCore.Domain;
 
 namespace LicenseManager.Infrastructure.Mappers
 {

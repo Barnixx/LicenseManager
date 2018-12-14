@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+using LicenseManager.Core.Domain;
 using LicenseManager.Infrastructure.EF;
 using LicenseManager.Infrastructure.Services;
-using LicenseManagerCore.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LicenseManager.Api.Controllers

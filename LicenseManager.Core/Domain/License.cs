@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace LicenseManagerCore.Domain
+namespace LicenseManager.Core.Domain
 {
     [Table("Licenses", Schema = "app")]
     public class License

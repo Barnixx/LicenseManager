@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace LicenseManagerCore.Domain
+namespace LicenseManager.Core.Domain
 {
     [Table("Users", Schema = "app")]
     public class User
@@ -12,6 +12,7 @@ namespace LicenseManagerCore.Domain
         public Guid Id { get; set; }
         [Required]
         [MinLength(5)]
+        [MaxLength(50)]
         [Column("Username")]
         public string UserName { get; set; }
         [Required]
@@ -22,7 +23,7 @@ namespace LicenseManagerCore.Domain
         [MinLength(8)]
         public string Password { get; set; }
         [Column("LastLogin")]
-        public string LastLogin { get; set; }
+        public DateTime LastLogin { get; set; }
         public UserDetails UserDetails { get; set; }
         public ICollection<License> Licenses { get; set; }
 

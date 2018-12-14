@@ -1,10 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using LicenseManagerCore.Domain;
+using LicenseManager.Core.Domain;
 
-namespace LicenseManagerCore.Repository
+namespace LicenseManager.Core.Repository
 {
     public interface IUserRepository : IRepository
     {

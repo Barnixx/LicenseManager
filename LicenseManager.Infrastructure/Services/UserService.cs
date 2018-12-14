@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using LicenseManagerCore.Domain;
-using LicenseManagerCore.Repository;
+using LicenseManager.Core.Domain;
+using LicenseManager.Core.Repository;
 
 namespace LicenseManager.Infrastructure.Services
 {

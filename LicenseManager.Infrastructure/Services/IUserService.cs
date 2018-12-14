@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using LicenseManagerCore.Domain;
+using LicenseManager.Core.Domain;
 
 namespace LicenseManager.Infrastructure.Services
 {

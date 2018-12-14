@@ -1,9 +1,9 @@
 using System;
 using System.Threading.Tasks;
 using FluentAssertions;
+using LicenseManager.Core.Domain;
+using LicenseManager.Core.Repository;
 using LicenseManager.Infrastructure.Services;
-using LicenseManagerCore.Domain;
-using LicenseManagerCore.Repository;
 using Moq;
 using Xunit;
 

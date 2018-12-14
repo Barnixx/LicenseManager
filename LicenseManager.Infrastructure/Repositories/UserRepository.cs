@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using LicenseManager.Core.Domain;
+using LicenseManager.Core.Repository;
 using LicenseManager.Infrastructure.EF;
-using LicenseManagerCore.Domain;
-using LicenseManagerCore.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace LicenseManager.Infrastructure.Repositories

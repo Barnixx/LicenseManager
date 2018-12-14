@@ -1,6 +1,4 @@
-using System.Runtime.Serialization.Json;
-
-namespace LicenseManagerCore.Repository
+namespace LicenseManager.Core.Repository
 {
     //Marker Interface
     public interface IRepository

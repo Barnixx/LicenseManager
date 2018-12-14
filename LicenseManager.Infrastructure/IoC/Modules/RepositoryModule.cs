@@ -1,6 +1,6 @@
 using System.Reflection;
 using Autofac;
-using LicenseManagerCore.Repository;
+using LicenseManager.Core.Repository;
 
 namespace LicenseManager.Infrastructure.IoC.Modules
 {

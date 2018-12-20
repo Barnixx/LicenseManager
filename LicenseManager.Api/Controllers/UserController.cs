@@ -10,7 +10,8 @@ using Microsoft.CodeAnalysis;
 
 namespace LicenseManager.Api.Controllers
 {
-    [Route("/user")]
+    [Route("users")]
+    [ApiController]
     public class UserController : ApiControllerBase
     {
         private readonly IUserService _userService;

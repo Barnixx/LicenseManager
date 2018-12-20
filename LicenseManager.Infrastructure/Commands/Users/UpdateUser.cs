@@ -1,6 +1,6 @@
 namespace LicenseManager.Infrastructure.Commands.Users
 {
-    public class UpdateUser
+    public class UpdateUser : ICommand
     {
         
     }

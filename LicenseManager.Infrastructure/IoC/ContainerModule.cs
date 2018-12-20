@@ -20,6 +20,7 @@ namespace LicenseManager.Infrastructure.IoC
             builder.RegisterInstance(AutoMapperConfig.Initialize()).SingleInstance();
             builder.RegisterModule<RepositoryModule>();
             builder.RegisterModule<ServiceModule>();
+            builder.RegisterModule<CommandModule>();
             builder.RegisterModule(new SettingsModule(_configuration));
         }
     }

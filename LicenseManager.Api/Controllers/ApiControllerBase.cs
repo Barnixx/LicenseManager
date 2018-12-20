@@ -4,10 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LicenseManager.Api.Controllers
 {
-    [Route("[controller]")]
-    public class ApiControllerBase : Controller
+    public abstract class ApiControllerBase : Controller
     {
-        private ICommandDispatcher _commandDispatcher;
+        private readonly ICommandDispatcher _commandDispatcher;
 
         public ApiControllerBase(ICommandDispatcher commandDispatcher)
         {

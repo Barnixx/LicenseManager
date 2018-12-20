@@ -18,6 +18,13 @@ namespace LicenseManager.Infrastructure.EF
         {
             
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .HasIndex(u => new {u.Email, u.UserName})
+                .IsUnique();
+        }
     }
     
 }

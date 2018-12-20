@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using LicenseManager.Core.Domain;
+using LicenseManager.Infrastructure.Commands.Users;
 
 namespace LicenseManager.Infrastructure.Services
 {
@@ -9,5 +10,6 @@ namespace LicenseManager.Infrastructure.Services
     {
         Task<User> GetAsync(Guid id);
         Task<IEnumerable<User>> GetAllAsync();
+        Task RegisterAsync(string username, string email, string password);
     }
 }

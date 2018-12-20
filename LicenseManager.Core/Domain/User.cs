@@ -27,9 +27,8 @@ namespace LicenseManager.Core.Domain
         public UserDetails UserDetails { get; set; }
         public ICollection<License> Licenses { get; set; }
 
-        public User(Guid id, string userName, string email, string password)
+        public User(string userName, string email, string password)
         {
-            Id = id;
             UserName = userName;
             Email = email;
             Password = password;

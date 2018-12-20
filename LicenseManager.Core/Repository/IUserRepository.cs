@@ -9,5 +9,6 @@ namespace LicenseManager.Core.Repository
     {
         Task<User> GetAsync(Guid id);
         Task<IEnumerable<User>> GetAllAsync();
+        Task AddAsync(User user);
     }
 }

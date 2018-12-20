@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using LicenseManager.Core.Domain;
 using LicenseManager.Core.Repository;
+using LicenseManager.Infrastructure.Commands.Users;
 
 namespace LicenseManager.Infrastructure.Services
 {
@@ -23,6 +24,12 @@ namespace LicenseManager.Infrastructure.Services
         public async Task<IEnumerable<User>> GetAllAsync()
         {
             return await _userRepository.GetAllAsync();
+        }
+
+        public async Task RegisterAsync(string username, string email, string password)
+        {
+            var user = new User(username, email, password);
+            await _userRepository.AddAsync(user);
         }
     }
 }

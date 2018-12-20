@@ -18,7 +18,7 @@ namespace LicenseManager.Tests.Services
 
             var userService = new UserService(userRepositoryMock.Object);
 
-            var user = new User(Guid.NewGuid(), "user1", "user1@email.com", "secretpassword");
+            var user = new User("user1", "user1@email.com", "secretpassword");
 
             userRepositoryMock
                 .Setup(x => x.GetAsync(It.IsAny<Guid>())).ReturnsAsync(user);

@@ -18,10 +18,15 @@ namespace LicenseManager.Infrastructure.Repositories
         }
 
         public async Task<User> GetAsync(Guid id) 
-            => await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+            => await _context.Users.FirstOrDefaultAsync(user => user.Id == id);
 
 
         public async Task<IEnumerable<User>> GetAllAsync()
             => await _context.Users.ToListAsync();
+
+        public async Task AddAsync(User user)
+        {
+            await _context.Users.AddAsync(user);
+        }
     }
 }

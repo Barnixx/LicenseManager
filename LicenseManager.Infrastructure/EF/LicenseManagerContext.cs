@@ -1,4 +1,5 @@
 using LicenseManager.Core.Domain;
+using LicenseManager.Core.Domain.Licenses;
 using Microsoft.EntityFrameworkCore;
 
 namespace LicenseManager.Infrastructure.EF

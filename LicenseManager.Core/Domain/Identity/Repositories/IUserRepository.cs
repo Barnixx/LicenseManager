@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace LicenseManager.Core.Domain.Identity.Repositories
 {
-    public interface IUserRepository
+    public interface IUserRepository : IRepository
     {
         Task<User> GetAsync(Guid id);
         Task<User> GetAsync(string email);

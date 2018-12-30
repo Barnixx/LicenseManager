@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
-using LicenseManager.Infrastructure.Commands;
+using LicenseManager.Services;
+using LicenseManager.Services.Dispatchers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LicenseManager.Api.Controllers
@@ -13,9 +14,10 @@ namespace LicenseManager.Api.Controllers
             _commandDispatcher = commandDispatcher;
         }
 
-        protected async Task DispatchAsync<T>(T command) where T : ICommand
+        protected async Task<IActionResult> DispatchAsync<T>(T command) where T : ICommand
         {
             await _commandDispatcher.DispatchAsync(command);
+            return Ok();
         }
     }
 }

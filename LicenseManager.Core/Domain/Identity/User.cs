@@ -1,13 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Security.Claims;
-using LicenseManager.Core.Domain.Licenses;
-using LicenseManager.Core.Domain.Identity;
 using LicenseManager.Core.Domain.Identity.Events;
 
-namespace LicenseManager.Core.Domain
+namespace LicenseManager.Core.Domain.Identity
 {
     //Aggregate
     [Table("Users", Schema = "app")]
@@ -39,7 +35,7 @@ namespace LicenseManager.Core.Domain
         {
         }
         
-        public User(Guid id, string userName, string email, string role)
+        public User(Guid id, string userName, string email, string role) : base(id)
         {
             if (!Identity.Role.IsValid(role))
             {
@@ -51,6 +47,11 @@ namespace LicenseManager.Core.Domain
             Role = role.ToLowerInvariant();
             CreatedAt = DateTime.UtcNow;
             AddEvent(new SignedUp(id, email, role));
+        }
+
+        public void Login()
+        {
+            LastLogin = DateTime.UtcNow;;
         }
 
         public void SetPasswordHash(string passwordHash)

@@ -15,6 +15,10 @@ namespace LicenseManager.Core.Domain.Licenses
         public DateTime? ModifyDate { get; protected set; }
         public LicenseStatus Status { get; protected set; }
 
+        private License()
+        {
+        }
+
         public License(Guid id, Guid userId, string ip, string hwid, string key, DateTime createdAt) : base(id)
         {
             UserId = userId;

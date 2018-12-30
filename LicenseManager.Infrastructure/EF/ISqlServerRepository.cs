@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using LicenseManager.Core.Domain;
+using LicenseManager.Core.Types;
+using LicenseManager.Infrastructure.Types;
 
 namespace LicenseManager.Infrastructure.EF
 {

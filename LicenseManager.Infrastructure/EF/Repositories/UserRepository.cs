@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using LicenseManager.Core.Domain;
+using LicenseManager.Core.Domain.Identity;
 using LicenseManager.Core.Domain.Identity.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,40 +10,34 @@ namespace LicenseManager.Infrastructure.EF.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        
-        private readonly LicenseManagerContext _context;
+        private readonly ISqlServerRepository<User> _repository;
 
-        public UserRepository(LicenseManagerContext context)
+        public UserRepository(ISqlServerRepository<User> repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
         public async Task<User> GetAsync(Guid id)
-            // ReSharper disable once HeapView.BoxingAllocation
-            => await _context.Users.FindAsync(id);
+            => await _repository.GetAsync(id);
 
         public async Task<User> GetAsync(string email)
-            => await _context.Users.FindAsync(email);
+            => await _repository.GetAsync(u => u.Email == email.ToLowerInvariant());
 
         public async Task<User> GetByUserNameAsync(string userName)
-            => await _context.Users.FindAsync(userName);
+            => await _repository.GetAsync(u => u.UserName == userName);
 
-        public Task<bool> IsEmailUnique(string email)
-            => _context.Users.First(x => x.Email == email).;
+        public async Task<bool> IsEmailUnique(string email)
+            => await _repository.ExistsAsync(u => u.Email == email.ToLowerInvariant()) == false;
 
-        public Task<bool> IsUserNameUnique(string userName)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<bool> IsUserNameUnique(string userName)
+            => await _repository.ExistsAsync(u => u.UserName == userName.ToLowerInvariant()) == false;
 
-        public Task CreateAsync(User user)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task CreateAsync(User user)
+            => await _repository.CreateAsync(user);
 
-        public Task UpdateAsync(User user)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task UpdateAsync(User user)
+            => await _repository.UpdateAsync(user);
+
+
     }
 }

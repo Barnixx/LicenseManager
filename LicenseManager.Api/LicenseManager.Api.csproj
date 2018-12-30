@@ -25,6 +25,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\LicenseManager.Infrastructure\LicenseManager.Infrastructure.csproj"/>
+        <ProjectReference Include="..\LicenseManager.Services\LicenseManager.Services.csproj"/>
     </ItemGroup>
 
 

@@ -1,8 +1,10 @@
 ﻿using System;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using LicenseManager.Infrastructure.Authentication;
 using LicenseManager.Infrastructure.EF;
 using LicenseManager.Infrastructure.IoC;
+using LicenseManager.Services.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -32,11 +34,24 @@ namespace LicenseManager.Api
                     options.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddJwt();
+            services.AddAuthorization(x => x.AddPolicy("admin", p => p.RequireRole("admin")));
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", cors =>
+                {
+                    cors.WithOrigins("https://localhost:4200")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                });
+            });
 
             //AutoFac Configuration
             var builder = new ContainerBuilder(); // AutoFac ContainerBulider
             builder.Populate(services); // Add dotnet component to AutoFac
-            builder.RegisterModule(new ContainerModule(Configuration)); // Register ContainerModule
+            builder.RegisterModule(new InfrastructureContainer(Configuration));
+            builder.RegisterModule(new ServiceContainer());// Register ContainerModule
             ApplicationContainer = builder.Build(); 
             
             return new AutofacServiceProvider(ApplicationContainer);

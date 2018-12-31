@@ -30,7 +30,7 @@ namespace LicenseManager.Services.Identity
                 throw new ServiceException("user_not_found", $"User: '{userId.ToString()}' was not found.");
             }
 
-            var token = _hasher.Create(user, userId.ToString("N"), "=", "+", "\\");
+            var token = _hasher.Create(user, userId.ToString("N"), "=", "+", "\\", "/", "?");
             await _refreshTokenRepository.CreateAsync(new RefreshToken(user, token));
         }
 

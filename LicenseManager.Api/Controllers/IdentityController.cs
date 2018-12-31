@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LicenseManager.Api.Controllers
 {
-    [Route("")]
+    [Route("api/")]
     [AllowAnonymous]
     public class IdentityController : ApiControllerBase
     {
@@ -21,15 +21,15 @@ namespace LicenseManager.Api.Controllers
             _refreshTokenService = refreshTokenService;
         }
 
-        [HttpPost("/sign-up")]
+        [HttpPost("sign-up")]
         public async Task<IActionResult> SignUp([FromBody] SignUp command)
             => await DispatchAsync(command.BindId(c => c.Id));
 
-        [HttpPost("/sign-in")]
+        [HttpPost("sign-in")]
         public async Task<IActionResult> SignIn([FromBody] SignIn command)
             => Ok(await _identityService.SignInAsync(command.Email, command.Password));
 
-        [HttpPost("/refreshToken/{refreshToken}/refresh")]
+        [HttpPost("refreshToken/{refreshToken}/refresh")]
         public async Task<IActionResult> RefreshToken(string refreshToken)
             => Ok(await _refreshTokenService.CreateAccessTokenAsync(refreshToken));
     }

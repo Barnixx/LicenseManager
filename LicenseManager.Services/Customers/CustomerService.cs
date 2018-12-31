@@ -1,26 +1,20 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using LicenseManager.Core.Domain.Addresses.Repositories;
 using LicenseManager.Core.Domain.Customers;
 using LicenseManager.Core.Domain.Customers.Repositories;
 using LicenseManager.Core.Types;
 using LicenseManager.Services.Customers.DTOs;
 using LicenseManager.Services.Customers.Queries;
-using Address = LicenseManager.Core.Domain.Addresses.Address;
 
 namespace LicenseManager.Services.Customers
 {
     public class CustomerService : ICustomerService
     {
         private readonly ICustomerRepository _customerRepository;
-        private readonly IAddressRepository _addressRepository;
 
-        public CustomerService(ICustomerRepository customerRepository, IAddressRepository addressRepository)
+        public CustomerService(ICustomerRepository customerRepository)
         {
             _customerRepository = customerRepository;
-            _addressRepository = addressRepository;
         }
 
 

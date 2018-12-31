@@ -13,6 +13,6 @@ namespace LicenseManager.Services.Identity.Handlers
         }
 
         public async Task HandleAsync(SignUp command)
-            => await _identityService.SignUpAsync(command.Id, command.Email, command.UserName, command.Password, command.Role);
+            => await _identityService.SignUpAsync(command.Id, command.Email, command.UserName, command.Password);
     }
 }

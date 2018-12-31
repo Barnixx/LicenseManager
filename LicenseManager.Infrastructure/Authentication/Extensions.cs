@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using LicenseManager.Infrastructure.Options;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -20,7 +21,7 @@ namespace LicenseManager.Infrastructure.Authentication
             var options = configuration.GetOptions<JwtOptions>("jwt");
             services.AddSingleton(options);
             services.AddSingleton<IJwtHandler, JwtHandler>();
-            services.AddAuthentication()
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(cfg =>
                 {
                     cfg.TokenValidationParameters = new TokenValidationParameters

@@ -10,7 +10,6 @@ namespace LicenseManager.Services.Identity.Commands
         public string Email { get; }
         public string UserName { get; }
         public string Password { get; }
-        public string Role { get; }
 
         [JsonConstructor]
         public SignUp(Guid id, string email, string userName, string password, string role)
@@ -19,7 +18,6 @@ namespace LicenseManager.Services.Identity.Commands
             Email = email;
             UserName = userName;
             Password = password;
-            Role = role;
         }
     }
 }

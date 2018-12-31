@@ -35,7 +35,7 @@ namespace LicenseManager.Services.Identity
             _jwtHandler = jwtHandler;
         }
 
-        public async Task SignUpAsync(Guid id, string email, string userName, string password, string role)
+        public async Task SignUpAsync(Guid id, string email, string userName, string password, string role = "user")
         {
             var user = await _userFactory.CreateAsync(id, email, userName, password, role);
             await _userRepository.CreateAsync(user);
@@ -51,9 +51,10 @@ namespace LicenseManager.Services.Identity
             }
 
             var jwt = _jwtHandler.CreateToken(user.Id, user.Role);
-            var token = _hasher.Create(user, user.Id.ToString("N"), "=", "+", "\\");
+            var token = _hasher.Create(user, user.Id.ToString("N"), "=", "+", "\\", "/");
+            
             await _refreshTokenRepository.CreateAsync(new RefreshToken(user, token));
-
+            
             user.Login();
             _userRepository.UpdateAsync(user);
 

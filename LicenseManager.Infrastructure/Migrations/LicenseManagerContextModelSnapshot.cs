@@ -19,28 +19,6 @@ namespace LicenseManager.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("LicenseManager.Core.Domain.Addresses.Address", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("City");
-
-                    b.Property<DateTime?>("CreatedAt");
-
-                    b.Property<Guid>("CustomerId");
-
-                    b.Property<string>("PostalCode");
-
-                    b.Property<string>("Street");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Id", "CustomerId");
-
-                    b.ToTable("Addresses");
-                });
-
             modelBuilder.Entity("LicenseManager.Core.Domain.Customers.Customer", b =>
                 {
                     b.Property<Guid>("Id")
@@ -79,6 +57,10 @@ namespace LicenseManager.Infrastructure.Migrations
                     b.Property<Guid>("UserId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Id", "Token", "UserId")
+                        .IsUnique()
+                        .HasFilter("[Token] IS NOT NULL");
 
                     b.ToTable("RefreshTokens");
                 });
@@ -124,6 +106,8 @@ namespace LicenseManager.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedAt");
 
+                    b.Property<Guid>("CustomerId");
+
                     b.Property<string>("HWID");
 
                     b.Property<string>("IP");
@@ -134,9 +118,10 @@ namespace LicenseManager.Infrastructure.Migrations
 
                     b.Property<byte>("Status");
 
-                    b.Property<Guid>("UserId");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("Id", "CustomerId")
+                        .IsUnique();
 
                     b.ToTable("Licenses","app");
                 });

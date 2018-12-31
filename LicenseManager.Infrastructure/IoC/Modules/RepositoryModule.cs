@@ -6,7 +6,6 @@ using LicenseManager.Core.Domain.Customers;
 using LicenseManager.Core.Domain.Identity;
 using LicenseManager.Core.Domain.Licenses;
 using LicenseManager.Infrastructure.EF;
-using Address = LicenseManager.Core.Domain.Addresses.Address;
 
 namespace LicenseManager.Infrastructure.IoC.Modules
 {
@@ -18,7 +17,6 @@ namespace LicenseManager.Infrastructure.IoC.Modules
            builder.AddSqlServerRepository<RefreshToken>();
            builder.AddSqlServerRepository<Customer>();
            builder.AddSqlServerRepository<License>();
-           builder.AddSqlServerRepository<Address>();
             
             var assembly = typeof(RepositoryModule)
                 .GetTypeInfo()

@@ -1,12 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using LicenseManager.Core.Domain;
 using LicenseManager.Core.Domain.Customers;
 using LicenseManager.Core.Domain.Identity;
 using LicenseManager.Core.Domain.Licenses;
 using Microsoft.EntityFrameworkCore;
-using Address = LicenseManager.Core.Domain.Addresses.Address;
 
 namespace LicenseManager.Infrastructure.EF
 {
@@ -20,7 +15,6 @@ namespace LicenseManager.Infrastructure.EF
         public DbSet<User> Users { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<License> Licenses { get; set; }
-        public DbSet<Address> Addresses { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
 
         public LicenseManagerContext(DbContextOptions<LicenseManagerContext> options) : base(options)
@@ -37,10 +31,14 @@ namespace LicenseManager.Infrastructure.EF
             modelBuilder.Entity<Customer>()
                 .HasIndex(c => new {c.Email, c.Id})
                 .IsUnique();
+
+            modelBuilder.Entity<License>()
+                .HasIndex(l => new {l.Id, l.CustomerId})
+                .IsUnique();
             
-            modelBuilder.Entity<Address>()
-                .HasIndex(a => new {a.Id, a.CustomerId});
-            modelBuilder.Ignore<Core.Domain.Customers.Address>();
+            modelBuilder.Entity<RefreshToken>()
+                .HasIndex(t => new {t.Id, t.Token, t.UserId})
+                .IsUnique();
 
         }
     }

@@ -7,7 +7,7 @@ namespace LicenseManager.Core.Domain.Licenses
     [Table("Licenses", Schema = "app")]
     public class License : AggregateRoot
     {
-        public Guid UserId { get; protected set; } 
+        public Guid CustomerId { get; protected set; } 
         public string IP { get; protected set; }
         public string HWID { get; protected set; }
         public string Key { get; protected set; }
@@ -19,13 +19,13 @@ namespace LicenseManager.Core.Domain.Licenses
         {
         }
 
-        public License(Guid id, Guid userId, string ip, string hwid, string key, DateTime createdAt) : base(id)
+        public License(Guid id, Guid customerId, string ip, string hwid, string key) : base(id)
         {
-            UserId = userId;
+            CustomerId = customerId;
             IP = ip;
             HWID = hwid;
             Key = key;
-            CreatedAt = createdAt;
+            CreatedAt = DateTime.UtcNow;
             Status = LicenseStatus.Created;
         }
 
@@ -36,6 +36,7 @@ namespace LicenseManager.Core.Domain.Licenses
                 throw new DomainException("License already active.");
             }
 
+            ModifyDate = DateTime.UtcNow;
             Status = LicenseStatus.Active;
         }
 
@@ -45,7 +46,7 @@ namespace LicenseManager.Core.Domain.Licenses
             {
                 throw new DomainException("License already canceled.");
             }
-
+            ModifyDate = DateTime.UtcNow;
             Status = LicenseStatus.Canceled;
         }
 

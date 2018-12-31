@@ -17,7 +17,8 @@ namespace LicenseManager.Infrastructure.EF
             TQuery query) where TQuery : PagedQuery;
         Task CreateAsync(TEntity entity);
         Task UpdateAsync(TEntity entity);
-        Task DeleteAsync(Guid id); 
+        Task DeleteAsync(Guid id);
+        Task DeleteAsync(IEnumerable<TEntity> entities);
         Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate);
     }
 }

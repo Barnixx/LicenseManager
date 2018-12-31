@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LicenseManager.Api.Controllers
 {
-    
+    [Authorize]
     [Route("api/license/")]
     public class LicenseController : ApiControllerBase
     {
@@ -24,9 +24,13 @@ namespace LicenseManager.Api.Controllers
         public async Task<IActionResult> Get(Guid id)
             => Single(await _licenseService.GetAsync(id), x => x.CustomerId == UserId);
 
-        [HttpPost, Authorize("user")]
+        [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateLicense command)
             => await DispatchAsync(command.BindId(c => c.Id).Bind(c => c.CustomerId, UserId));
+
+        [HttpPost("change-status")]
+        public async Task<IActionResult> Post([FromBody] ChangeStatusLicense command)
+            => await DispatchAsync(command.Bind(c => c.CustomerId, UserId));
 
     }
 }

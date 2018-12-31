@@ -56,7 +56,9 @@ namespace LicenseManager.Services.Identity
             await _refreshTokenRepository.CreateAsync(new RefreshToken(user, token));
             
             user.Login();
-            _userRepository.UpdateAsync(user);
+
+            await _userRepository.UpdateAsync(user);
+
 
             return new IdentityToken
             {

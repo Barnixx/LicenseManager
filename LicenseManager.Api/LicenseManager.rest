@@ -1,6 +1,7 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNDZhY2JlMS01Y2U4LTQ3YzUtYWUwNC0wY2Q0Yzg4NGNmNTYiLCJ1bmlxdWVfbmFtZSI6IjA0NmFjYmUxLTVjZTgtNDdjNS1hZTA0LTBjZDRjODg0Y2Y1NiIsImp0aSI6IjVmMjU3MGZlLWFhNDgtNGVkYS1iZjE5LTIyZDIxNjMwYmUwZCIsImlhdCI6IjE1NDYyMjI3NDEwMjA2IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiYWRtaW4iLCJuYmYiOjE1NDYyMjI3NDEsImV4cCI6MTU0NjIyNDU0MSwiaXNzIjoibGljZW5zZS1tYW5hZ2VyLWlkZW50aXR5LXNlcnZpY2UifQ.X57iFX6uaHPmJBY9rBlIeyw2u1OCBz9Vqx3Zf_Y-lmM
-@refreshToken = AQAAAAEAACcQAAAAELjGz6tONn0OSj8MFVtlL9XnpiyPnSKUtKHsFom84Do5fwavqJ4Mi6n6ztUO75RfQ
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNDZhY2JlMS01Y2U4LTQ3YzUtYWUwNC0wY2Q0Yzg4NGNmNTYiLCJ1bmlxdWVfbmFtZSI6IjA0NmFjYmUxLTVjZTgtNDdjNS1hZTA0LTBjZDRjODg0Y2Y1NiIsImp0aSI6IjM5YWY4MGNjLTc4NmQtNDE2MS1hY2ViLThlMTk0YmRmYTBhNSIsImlhdCI6IjE1NDYyNzA5ODUxNjkwIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiYWRtaW4iLCJuYmYiOjE1NDYyNzA5ODUsImV4cCI6MTU0NjI3Mjc4NSwiaXNzIjoibGljZW5zZS1tYW5hZ2VyLWlkZW50aXR5LXNlcnZpY2UifQ.xKMlF51Qq3mHyeMm6tijksziuRAPVT8ySnO1Ai1k-lA
 
+####
+@refreshToken = AQAAAAEAACcQAAAAEDPdNm3P3WZcp6zKvDZepgeXZkzyFgeRLgQu8MyQf1gelHCvR0m6ldUvFWiew
 
 
 ###
@@ -14,7 +15,7 @@ content-type: application/json
 }
 
 ###
-POST http://localhost:5000/api/sign-in
+POST https://localhost:5001/api/sign-in
 content-type: application/json
 
 {
@@ -26,7 +27,8 @@ content-type: application/json
 POST http://localhost:5000/api/refreshToken/{{refreshToken}}/refresh
 
 ###
-GET http://localhost:5000/api/license/C3388C8A-1BCC-4653-9BD3-C2E659040635
+GET http://localhost:5000/api/license/323BF0A9-16C2-48BC-8D80-0888FA854142
+authorization: Bearer {{token}}
 
 ###
 POST http://localhost:5000/api/license
@@ -37,4 +39,14 @@ Content-Type: application/json
   "ip": "558.152.155.122",
   "hwid": "566684023544545",
   "key": "565ds4dds8d8sd5sd4ad6sa4d"
+}
+
+###
+POST https://localhost:5001/api/license/change-status
+authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "id": "323BF0A9-16C2-48BC-8D80-0888FA854142",
+  "status": "Active"
 }

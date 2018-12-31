@@ -52,6 +52,12 @@ namespace LicenseManager.Infrastructure.EF
             await Context.SaveChangesAsync();
         }
 
+        public async Task DeleteAsync(IEnumerable<TEntity> entities)
+        {
+            Context.Set<TEntity>().RemoveRange(entities);
+            await Context.SaveChangesAsync();
+        }
+
         public async Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate)
             => await Context.Set<TEntity>().AnyAsync(predicate);
     }

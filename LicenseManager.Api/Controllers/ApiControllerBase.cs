@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LicenseManager.Api.Controllers
 {
+    [ApiController]
     public abstract class ApiControllerBase : Controller
     {
         private readonly ICommandDispatcher _commandDispatcher;

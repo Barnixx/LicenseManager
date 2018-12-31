@@ -29,22 +29,22 @@ namespace LicenseManager.Core.Domain.Licenses
             Status = LicenseStatus.Created;
         }
 
-        public void Activate()
+        public void Active()
         {
             if (Status == LicenseStatus.Active)
             {
-                throw new DomainException("License already active.");
+                throw new DomainException("license_error", "License already active.");
             }
 
             ModifyDate = DateTime.UtcNow;
             Status = LicenseStatus.Active;
         }
 
-        public void Cancel()
+        public void Canceled()
         {
             if (Status == LicenseStatus.Canceled)
             {
-                throw new DomainException("License already canceled.");
+                throw new DomainException("license_error", "License already canceled.");
             }
             ModifyDate = DateTime.UtcNow;
             Status = LicenseStatus.Canceled;

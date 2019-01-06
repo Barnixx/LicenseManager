@@ -1,9 +1,11 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
 namespace LicenseManager.Core.Domain.Identity
-{
+{    
+    [Table("RefreshTokens", Schema = "app")]
     public class RefreshToken : AggregateRoot
     {
         public Guid UserId { get; protected set; }

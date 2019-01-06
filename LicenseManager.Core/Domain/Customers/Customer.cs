@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using LicenseManager.Core.Domain.Customers.Events;
 
 namespace LicenseManager.Core.Domain.Customers
 {
+    
+    [Table("Customers", Schema = "app")]
     public class Customer : AggregateRoot
     {
         public string Email { get; protected set; }

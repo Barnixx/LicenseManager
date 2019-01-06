@@ -45,7 +45,7 @@ namespace LicenseManager.Api
             {
                 options.AddPolicy("CorsPolicy", cors =>
                 {
-                    cors.WithOrigins("https://localhost:4200")
+                    cors.WithOrigins("http://localhost:4200")
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials();
@@ -75,7 +75,7 @@ namespace LicenseManager.Api
             }
 
             app.UseAuthentication();
-            app.UseHttpsRedirection();
+//            app.UseHttpsRedirection();
             app.UseCors("CorsPolicy");
             app.UseMiddleware<ErrorHandlerMiddleware>(); // add Http error handler
             app.UseMvc();

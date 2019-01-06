@@ -1,9 +1,13 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using LicenseManager.Core.Domain.Licenses;
 using LicenseManager.Core.Domain.Licenses.Repositories;
+using LicenseManager.Core.Types;
+using LicenseManager.Infrastructure.Types;
 using LicenseManager.Services.Licenses.DTOs;
+using LicenseManager.Services.Licenses.Queries;
 
 namespace LicenseManager.Services.Licenses
 {
@@ -39,6 +43,14 @@ namespace LicenseManager.Services.Licenses
             }
 
             return license;
+        }
+
+        public async Task<IPagedResult<LicenseDto>> BrowseAsync(Guid customerId, BrowseLicenses query)
+        {
+            var licenses = await _licenseRepository.BrowseAsync(customerId, query);
+            return PagedResult<LicenseDto>.From(
+                (PagedResultBase)licenses, 
+                _mapper.Map<IEnumerable<License>, IEnumerable<LicenseDto>>(licenses.Items));
         }
 
         public async Task CreateAsync(Guid id, Guid customerId, string ip, string hwid, string key)

@@ -9,7 +9,7 @@ namespace LicenseManager.Infrastructure.EF
 {
     public static class Pagination
     {
-        public static async Task<IPagedResult<T>> PaginateAsync<T>(this IQueryable<T> collection, PagedQuery query)
+        public static async Task<IPagedResult<T>> PaginateAsync<T>(this IQueryable<T> collection, IPagedQuery query)
             => await collection.PaginateAsync(query.Page, query.Results);
 
         private static async Task<IPagedResult<T>> PaginateAsync<T>(this IQueryable<T> collection, int page = 1, int resultsPerPage = 10)

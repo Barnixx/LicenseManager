@@ -30,7 +30,7 @@ namespace LicenseManager.Infrastructure.EF
             => await Context.Set<TEntity>().Where(predicate).ToListAsync();
 
         public async Task<IPagedResult<TEntity>> BrowseAsync<TQuery>(Expression<Func<TEntity, bool>> predicate, TQuery query)
-            where TQuery : PagedQuery
+            where TQuery : IPagedQuery
             => await Context.Set<TEntity>().Where(predicate).PaginateAsync(query);
 
         public async Task CreateAsync(TEntity entity)

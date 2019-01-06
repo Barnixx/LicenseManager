@@ -1,5 +1,7 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
+using LicenseManager.Core.Types;
 using LicenseManager.Services;
 using LicenseManager.Services.Dispatchers;
 using Microsoft.AspNetCore.Mvc;
@@ -42,6 +44,27 @@ namespace LicenseManager.Api.Controllers
             }
 
             return NotFound();
+        }
+
+        protected IActionResult Collection<T>(IPagedResult<T> pagedResult, Func<IPagedResult<T>, bool> criteria = null)
+        {
+            if (pagedResult == null)
+            {
+                return NotFound();
+            }
+
+            var isValid = criteria == null || criteria(pagedResult);
+            if (!isValid)
+            {
+                return NotFound();
+            }
+
+            if (pagedResult.IsEmpty)
+            {
+                return Ok(Enumerable.Empty<T>());
+            }
+
+            return Ok(pagedResult);
         }
         
         

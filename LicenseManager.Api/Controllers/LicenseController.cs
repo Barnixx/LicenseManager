@@ -4,6 +4,7 @@ using LicenseManager.Infrastructure.Mvc;
 using LicenseManager.Services.Dispatchers;
 using LicenseManager.Services.Licenses;
 using LicenseManager.Services.Licenses.Commands;
+using LicenseManager.Services.Licenses.Queries;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +20,9 @@ namespace LicenseManager.Api.Controllers
             _licenseService = licenseService;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery] BrowseLicenses query)
+            => Collection(await _licenseService.BrowseAsync(UserId, query));
         
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)

@@ -45,7 +45,7 @@ namespace LicenseManager.Api
             {
                 options.AddPolicy("CorsPolicy", cors =>
                 {
-                    cors.WithOrigins("http://localhost:4200")
+                    cors.WithOrigins(Configuration.GetSection("Client")["Host"])
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials();

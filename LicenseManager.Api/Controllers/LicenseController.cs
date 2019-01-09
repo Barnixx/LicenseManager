@@ -36,5 +36,9 @@ namespace LicenseManager.Api.Controllers
         public async Task<IActionResult> Post([FromBody] ChangeStatusLicense command)
             => await DispatchAsync(command.Bind(c => c.CustomerId, UserId));
 
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody] UpdateLicense command)
+            => await DispatchAsync(command.Bind(c => c.CustomerId, UserId));
+
     }
 }

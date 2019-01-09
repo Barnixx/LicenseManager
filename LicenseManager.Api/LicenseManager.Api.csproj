@@ -4,6 +4,7 @@
         <TargetFramework>netcoreapp2.1</TargetFramework>
         <AssemblyName>LicenseManager.Api</AssemblyName>
         <RootNamespace>LicenseManager.Api</RootNamespace>
+        <UserSecretsId>a3b22259-c235-4b98-9faa-9fd5e7549343</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>

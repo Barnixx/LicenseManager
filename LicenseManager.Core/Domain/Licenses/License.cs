@@ -29,6 +29,15 @@ namespace LicenseManager.Core.Domain.Licenses
             Status = LicenseStatus.Created;
         }
 
+        public void Update(string ip, string hwid, string key)
+        {
+            IP = ip;
+            HWID = hwid;
+            Key = key;
+            ModifyDate = DateTime.UtcNow;
+            Status = LicenseStatus.Updated;
+        }
+
         public void Active()
         {
             if (Status == LicenseStatus.Active)
@@ -55,6 +64,7 @@ namespace LicenseManager.Core.Domain.Licenses
             Created = 0,
             Active = 1,
             Canceled = 2,
+            Updated = 3,
         }
     }
 }

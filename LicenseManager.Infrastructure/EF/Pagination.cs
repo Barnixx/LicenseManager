@@ -1,6 +1,9 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LicenseManager.Core.Domain.Licenses;
 using LicenseManager.Core.Types;
 using LicenseManager.Infrastructure.Types;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +31,7 @@ namespace LicenseManager.Infrastructure.EF
             if (isEmpty)
             {
                 return PagedResult<T>.Empty;
+
             }
 
             var totalResults = await collection.CountAsync();

@@ -1,8 +1,11 @@
 ﻿using System;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using LicenseManager.Api.Framework;
+using LicenseManager.Infrastructure.Authentication;
 using LicenseManager.Infrastructure.EF;
 using LicenseManager.Infrastructure.IoC;
+using LicenseManager.Services.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -32,11 +35,28 @@ namespace LicenseManager.Api
                     options.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddJwt();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("admin", p => p.RequireRole("admin"));
+                options.AddPolicy("user", p => p.RequireRole("user", "admin"));
+            });
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", cors =>
+                {
+                    cors.WithOrigins(Configuration.GetSection("Client")["Host"])
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                });
+            });
 
             //AutoFac Configuration
             var builder = new ContainerBuilder(); // AutoFac ContainerBulider
             builder.Populate(services); // Add dotnet component to AutoFac
-            builder.RegisterModule(new ContainerModule(Configuration)); // Register ContainerModule
+            builder.RegisterModule(new InfrastructureContainer(Configuration));
+            builder.RegisterModule(new ServiceContainer());// Register ContainerModule
             ApplicationContainer = builder.Build(); 
             
             return new AutofacServiceProvider(ApplicationContainer);
@@ -54,7 +74,10 @@ namespace LicenseManager.Api
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            app.UseAuthentication();
+//            app.UseHttpsRedirection();
+            app.UseCors("CorsPolicy");
+            app.UseMiddleware<ErrorHandlerMiddleware>(); // add Http error handler
             app.UseMvc();
 
             applicationLifetime.ApplicationStopped.Register(() => ApplicationContainer.Dispose());// Clear AutoFac component after stop application

@@ -4,6 +4,7 @@
         <TargetFramework>netcoreapp2.1</TargetFramework>
         <AssemblyName>LicenseManager.Api</AssemblyName>
         <RootNamespace>LicenseManager.Api</RootNamespace>
+        <UserSecretsId>a3b22259-c235-4b98-9faa-9fd5e7549343</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
@@ -11,17 +12,12 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Autofac">
-            <Version>4.8.1</Version>
-        </PackageReference>
-        <PackageReference Include="Autofac.Extensions.DependencyInjection">
-            <Version>4.3.1</Version>
-        </PackageReference>
         <PackageReference Include="Microsoft.AspNetCore.All"/>
     </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\LicenseManager.Infrastructure\LicenseManager.Infrastructure.csproj"/>
+        <ProjectReference Include="..\LicenseManager.Services\LicenseManager.Services.csproj"/>
     </ItemGroup>
 
 

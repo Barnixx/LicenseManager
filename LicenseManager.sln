@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseManagerTests", "Lice
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseManagerTestsEndToEnd", "LicenseManager.Tests.EndToEnd\LicenseManager.Tests.EndToEnd.csproj", "{AFA2CAAD-D154-45A0-A3CD-96FF22D18E48}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseManager.Services", "LicenseManager.Services\LicenseManager.Services.csproj", "{FA84CCB6-6C6A-48C7-97F1-D32078F8815E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{AFA2CAAD-D154-45A0-A3CD-96FF22D18E48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFA2CAAD-D154-45A0-A3CD-96FF22D18E48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFA2CAAD-D154-45A0-A3CD-96FF22D18E48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA84CCB6-6C6A-48C7-97F1-D32078F8815E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA84CCB6-6C6A-48C7-97F1-D32078F8815E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA84CCB6-6C6A-48C7-97F1-D32078F8815E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA84CCB6-6C6A-48C7-97F1-D32078F8815E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
